@@ -1,0 +1,384 @@
+<head>
+    <!-- add this https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css,  https://hammerjs.github.io/dist/hammer.min.js -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+
+</head>
+
+
+
+
+<div class="tinder">
+    <div class="tinder--status">
+        <i class="fa fa-remove"></i>
+        <i class="fa fa-heart"></i>
+    </div>
+    <div class="tinder--cards">
+
+        <div class="book tinder--card">
+            <p>
+                Biology
+            </p> [Definition] - [التعريف] <br />
+            <br />
+            "definded in english"
+            <br />
+            <br />
+            "definded in arabic"
+            <img src="https://thumbs.dreamstime.com/b/biology-hand-drawn-doodles-lettering-education-science-vector-white-background-135246167.jpg"
+                width="250" />
+            <audio controls>
+                <source src="https://media.merriam-webster.com/audio/prons/en/us/mp3/a/acidb01m.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <div class="cover">
+                <p>Biology</p>
+            </div>
+        </div>
+
+        <div class="book tinder--card">
+            <p>
+                Biology
+            </p> [Definition] - [التعريف] <br />
+            <br />
+            "definded in english"
+            <br />
+            <br />
+            "definded in arabic"
+            <img src="https://thumbs.dreamstime.com/b/biology-hand-drawn-doodles-lettering-education-science-vector-white-background-135246167.jpg"
+                width="250" />
+            <audio controls>
+                <source src="https://media.merriam-webster.com/audio/prons/en/us/mp3/a/acidb01m.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <div class="cover">
+                <p>Biology</p>
+            </div>
+        </div>
+        <div class="book tinder--card">
+            <p>
+                Biology
+            </p> [Definition] - [التعريف] <br />
+            <br />
+            "definded in english"
+            <br />
+            <br />
+            "definded in arabic"
+            <img src="https://thumbs.dreamstime.com/b/biology-hand-drawn-doodles-lettering-education-science-vector-white-background-135246167.jpg"
+                width="250" />
+            <audio controls>
+                <source src="https://media.merriam-webster.com/audio/prons/en/us/mp3/a/acidb01m.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <div class="cover">
+                <p>Biology</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="tinder--buttons">
+        <button id="nope"><i class="fa fa-remove"></i></button>
+        <button id="love"><i class="fa fa-heart"></i></button>
+    </div>
+</div>
+
+<style>
+    .book {
+
+        border-radius: 10px;
+        width: 220px;
+        height: 300px;
+        background-color: whitesmoke;
+        -webkit-box-shadow: 1px 1px 12px #000;
+        box-shadow: 1px 1px 12px #000;
+        -webkit-transform: preserve-3d;
+        -ms-transform: preserve-3d;
+        transform: preserve-3d;
+        -webkit-perspective: 2000px;
+        perspective: 2000px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        color: #000;
+    }
+
+    .cover {
+        top: 0;
+        position: absolute;
+        background-color: lightgray;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        cursor: pointer;
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+        -webkit-transform-origin: 0;
+        -ms-transform-origin: 0;
+        transform-origin: 0;
+        -webkit-box-shadow: 1px 1px 12px #000;
+        box-shadow: 1px 1px 12px #000;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+
+    .book:hover .cover {
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+        -webkit-transform: rotatey(-80deg);
+        -ms-transform: rotatey(-80deg);
+        transform: rotatey(-80deg);
+    }
+
+    p {
+        font-size: 20px;
+        font-weight: bolder;
+    }
+</style>
+
+<style>
+    .tinder {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        opacity: 0;
+        transition: opacity 0.1s ease-in-out;
+    }
+
+    .loaded.tinder {
+        opacity: 1;
+    }
+
+    .tinder--status {
+        position: absolute;
+        top: 50%;
+        margin-top: -30px;
+        z-index: 2;
+        width: 100%;
+        text-align: center;
+        pointer-events: none;
+    }
+
+    .tinder--status i {
+        font-size: 100px;
+        opacity: 0;
+        transform: scale(0.3);
+        transition: all 0.2s ease-in-out;
+        position: absolute;
+        width: 100px;
+        margin-left: -50px;
+    }
+
+    .tinder_love .fa-heart {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+
+    .tinder_nope .fa-remove {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+
+    .tinder--cards {
+        flex-grow: 1;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .tinder--card {
+        width: 60%;
+        max-width: fit-content;
+        height: fit-content;
+        border-radius: 1rem;
+        overflow: hidden;
+        position: absolute;
+        will-change: transform;
+        transition: all 0.3s ease-in-out;
+        cursor: -webkit-grab;
+        cursor: -moz-grab;
+        cursor: grab;
+    }
+
+    .moving.tinder--card {
+        transition: none;
+    }
+
+    .tinder--card audio {
+        pointer-events: all;
+    }
+
+    .tinder--card h3 {
+        margin-top: 32px;
+        font-size: 32px;
+        padding: 0 16px;
+    }
+
+    .tinder--card p {
+        margin-top: 24px;
+        font-size: 20px;
+        padding: 0 16px;
+    }
+
+
+    .tinder--card * {
+        pointer-events: none;
+    }
+
+    .audio-div {
+        padding: 10px;
+        pointer-events: all;
+    }
+
+    .tinder--buttons {
+        flex: 0 0 100px;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .tinder--buttons button {
+        border-radius: 50%;
+        line-height: 60px;
+        width: 60px;
+        border: 0;
+        background: #FFFFFF;
+        display: inline-block;
+        margin: 0 8px;
+    }
+
+    .tinder--buttons button:focus {
+        outline: 0;
+    }
+
+    .tinder--buttons i {
+        font-size: 32px;
+        vertical-align: middle;
+    }
+
+    .fa-heart {
+        color: #FFACE4;
+    }
+
+    .fa-remove {
+        color: #CDD6DD;
+    }
+</style>
+
+<script>
+    'use strict';
+
+    var tinderContainer = document.querySelector('.tinder');
+    var allCards = document.querySelectorAll('.tinder--card');
+    var nope = document.getElementById('nope');
+    var love = document.getElementById('love');
+
+    function initCards(card, index) {
+        var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
+
+        newCards.forEach(function (card, index) {
+            card.style.zIndex = allCards.length - index;
+            card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
+            card.style.opacity = (10 - index) / 10;
+        });
+
+        tinderContainer.classList.add('loaded');
+    }
+
+    initCards();
+
+    allCards.forEach(function (el) {
+        var hammertime = new Hammer(el);
+
+        hammertime.on('pan', function (event) {
+            el.classList.add('moving');
+        });
+
+        hammertime.on('pan', function (event) {
+            if (event.deltaX === 0) return;
+            if (event.center.x === 0 && event.center.y === 0) return;
+
+            tinderContainer.classList.toggle('tinder_love', event.deltaX > 0);
+            tinderContainer.classList.toggle('tinder_nope', event.deltaX < 0);
+
+            var xMulti = event.deltaX * 0.03;
+            var yMulti = event.deltaY / 80;
+            var rotate = xMulti * yMulti;
+
+            event.target.style.transform = 'translate(' + event.deltaX + 'px, ' + event.deltaY + 'px) rotate(' + rotate + 'deg)';
+        });
+
+        hammertime.on('panend', function (event) {
+            el.classList.remove('moving');
+            tinderContainer.classList.remove('tinder_love');
+            tinderContainer.classList.remove('tinder_nope');
+
+            var moveOutWidth = document.body.clientWidth;
+            var keep = Math.abs(event.deltaX) < 80 || Math.abs(event.velocityX) < 0.5;
+
+            event.target.classList.toggle('removed', !keep);
+
+            if (keep) {
+                event.target.style.transform = '';
+            } else {
+                var endX = Math.max(Math.abs(event.velocityX) * moveOutWidth, moveOutWidth);
+                var toX = event.deltaX > 0 ? endX : -endX;
+                var endY = Math.abs(event.velocityY) * moveOutWidth;
+                var toY = event.deltaY > 0 ? endY : -endY;
+                var xMulti = event.deltaX * 0.03;
+                var yMulti = event.deltaY / 80;
+                var rotate = xMulti * yMulti;
+
+                event.target.style.transform = 'translate(' + toX + 'px, ' + (toY + event.deltaY) + 'px) rotate(' + rotate + 'deg)';
+                initCards();
+            }
+        });
+    });
+
+    function createButtonListener(love) {
+        return function (event) {
+            var cards = document.querySelectorAll('.tinder--card:not(.removed)');
+            var moveOutWidth = document.body.clientWidth * 1.5;
+
+            if (!cards.length) return false;
+
+            var card = cards[0];
+
+            card.classList.add('removed');
+
+            if (love) {
+                card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
+            } else {
+                card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
+            }
+
+            initCards();
+
+            event.preventDefault();
+        };
+    }
+
+    var nopeListener = createButtonListener(false);
+    var loveListener = createButtonListener(true);
+
+    nope.addEventListener('click', nopeListener);
+    love.addEventListener('click', loveListener);
+
+</script>
